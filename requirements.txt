@@ -1,0 +1,6 @@
+boto3==1.38.7
+cryptography==44.0.3
+qrcode==8.2
+python-dotenv==1.1.0
+pillow==11.2.1
+pyzbar==0.1.9
