@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "signed-qrcodes-cli"
+version = "0.1.0"
+description = "Generate and verify tamper-evident, signed QR codes backed by AWS"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "boto3>=1.38",
+    "cryptography>=44.0",
+    "qrcode[pil]>=8.2",
+    "python-dotenv>=1.1",
+    "pillow>=11.2",
+    "pyzbar>=0.1.9",
+]
+
+[project.scripts]
+sqrc-gen = "sqrc.gen:main"
+sqrc-verify = "sqrc.verify:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sqrc"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-mock>=3.14",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
